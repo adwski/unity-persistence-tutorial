@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -55,7 +53,12 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            MenuManager.Instance.SetCurrentScore(m_Points);
+            if (MenuManager.Instance.IsHiScore())
+            {
+                SceneManager.LoadScene(2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
